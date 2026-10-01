@@ -26,7 +26,7 @@ const loginDoctor = async (req, res) => {
 
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in doctorController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -41,7 +41,7 @@ const appointmentsDoctor = async (req, res) => {
         res.json({ success: true, appointments })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in doctorController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -61,7 +61,7 @@ const appointmentCancel = async (req, res) => {
         res.json({ success: false, message: 'Appointment Cancelled' })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in doctorController:", error);
         res.json({ success: false, message: error.message })
     }
 
@@ -82,7 +82,7 @@ const appointmentComplete = async (req, res) => {
         res.json({ success: false, message: 'Appointment Cancelled' })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in doctorController:", error);
         res.json({ success: false, message: error.message })
     }
 
@@ -96,7 +96,7 @@ const doctorList = async (req, res) => {
         res.json({ success: true, doctors })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in doctorController:", error);
         res.json({ success: false, message: error.message })
     }
 
@@ -113,7 +113,7 @@ const changeAvailablity = async (req, res) => {
         res.json({ success: true, message: 'Availablity Changed' })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in doctorController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -128,7 +128,7 @@ const doctorProfile = async (req, res) => {
         res.json({ success: true, profileData })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in doctorController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -144,7 +144,7 @@ const updateDoctorProfile = async (req, res) => {
         res.json({ success: true, message: 'Profile Updated' })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in doctorController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -185,7 +185,7 @@ const doctorDashboard = async (req, res) => {
         res.json({ success: true, dashData })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in doctorController:", error);
         res.json({ success: false, message: error.message })
     }
 }

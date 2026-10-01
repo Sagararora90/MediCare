@@ -53,7 +53,7 @@ const registerUser = async (req, res) => {
         res.json({ success: true, token })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -79,7 +79,7 @@ const loginUser = async (req, res) => {
             res.json({ success: false, message: "Invalid credentials" })
         }
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -94,7 +94,7 @@ const getProfile = async (req, res) => {
         res.json({ success: true, userData })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -125,7 +125,7 @@ const updateProfile = async (req, res) => {
         res.json({ success: true, message: 'Profile Updated' })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -181,7 +181,7 @@ const bookAppointment = async (req, res) => {
         res.json({ success: true, message: 'Appointment Booked' })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 
@@ -215,7 +215,7 @@ const cancelAppointment = async (req, res) => {
         res.json({ success: true, message: 'Appointment Cancelled' })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -230,7 +230,7 @@ const listAppointment = async (req, res) => {
         res.json({ success: true, appointments })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -259,7 +259,7 @@ const paymentRazorpay = async (req, res) => {
         res.json({ success: true, order })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -278,7 +278,7 @@ const verifyRazorpay = async (req, res) => {
             res.json({ success: false, message: 'Payment Failed' })
         }
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -319,7 +319,7 @@ const paymentStripe = async (req, res) => {
         res.json({ success: true, session_url: session.url });
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 }
@@ -337,7 +337,7 @@ const verifyStripe = async (req, res) => {
         res.json({ success: false, message: 'Payment Failed' })
 
     } catch (error) {
-        console.log(error)
+        console.error("Error in userController:", error);
         res.json({ success: false, message: error.message })
     }
 
