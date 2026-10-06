@@ -87,12 +87,11 @@ const ChatbotWidget = () => {
                   }}
                 >
                   {msg.role === "assistant" ? (
-                    <ReactMarkdown 
-                      className="prose prose-sm max-w-none text-left"
-                      remarkPlugins={[remarkGfm]}
-                    >
-                      {msg.content}
-                    </ReactMarkdown>
+                    <div className="prose prose-sm max-w-none text-left">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {msg.content}
+                      </ReactMarkdown>
+                    </div>
                   ) : (
                     <span>{msg.content}</span>
                   )}
