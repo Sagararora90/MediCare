@@ -1,6 +1,8 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import axios from "axios";
 import { AppContext } from "../context/AppContext";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const ChatbotWidget = () => {
   const { backendUrl } = useContext(AppContext);
@@ -71,27 +73,36 @@ const ChatbotWidget = () => {
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`mb-2 ${
-                  msg.role === "user" ? "text-right" : "text-left"
+                className={`mb-2 flex flex-col ${
+                  msg.role === "user" ? "items-end" : "items-start"
                 }`}
               >
-                <span
-                  className={`inline-block px-3 py-2 rounded max-w-full ${
-                    msg.role === "user" ? "bg-blue-200" : "bg-green-200"
+                <div
+                  className={`inline-block px-3 py-2 rounded max-w-[95%] ${
+                    msg.role === "user" ? "bg-blue-200" : "bg-white border border-gray-200 shadow-sm"
                   }`}
                   style={{
                     wordBreak: "break-word",
                     overflowWrap: "break-word",
                   }}
                 >
-                  {msg.content}
-                </span>
+                  {msg.role === "assistant" ? (
+                    <ReactMarkdown 
+                      className="prose prose-sm max-w-none text-left"
+                      remarkPlugins={[remarkGfm]}
+                    >
+                      {msg.content}
+                    </ReactMarkdown>
+                  ) : (
+                    <span>{msg.content}</span>
+                  )}
+                </div>
               </div>
             ))}
 
             {loading && (
               <div className="text-left">
-                <span className="inline-block px-3 py-2 rounded bg-green-200">
+                <span className="inline-block px-3 py-2 rounded bg-white border border-gray-200 shadow-sm text-gray-500">
                   Typing...
                 </span>
               </div>
@@ -101,7 +112,7 @@ const ChatbotWidget = () => {
           <form onSubmit={handleSend} className="flex">
             <input
               type="text"
-              className="flex-grow border p-2 rounded-l break-words"
+              className="flex-grow border p-2 rounded-l break-words focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask a question..."
@@ -110,10 +121,10 @@ const ChatbotWidget = () => {
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 rounded-r"
+              className="bg-blue-600 text-white px-4 rounded-r hover:bg-blue-700"
               disabled={loading}
             >
-              ➤
+              Send
             </button>
           </form>
         </div>
